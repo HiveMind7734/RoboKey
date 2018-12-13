@@ -2,25 +2,27 @@
  * @author sn0w
  */
 
-package roboType;
+//package roboType;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class RoboTyper
+
+public class BadNews
 {
-	
-	@SuppressWarnings("unchecked")
-	public static void main(String[] args)
-	{
-		boolean roboRun = true;
-		
+
+    @SuppressWarnings("unchecked")
+    public static void main(String[] args) throws AWTException {
+        boolean roboRun = true;
+        /*Creates a new robot object*/
+        Robot robot = new Robot();
+
         Random random = new Random();
-        
+
         @SuppressWarnings("rawtypes")
-		ArrayList keys = new ArrayList();
+        ArrayList keys = new ArrayList();
         keys.add(KeyEvent.VK_0);
         keys.add(KeyEvent.VK_1);
         keys.add(KeyEvent.VK_2);
@@ -60,29 +62,27 @@ public class RoboTyper
         keys.add(KeyEvent.VK_ENTER);
         keys.add(KeyEvent.VK_SPACE);
         keys.add(KeyEvent.VK_BACK_SPACE);
-        
+
+
+        /*Sets the delay of the program*/
+        int delay = random.nextInt(10000)+4000;
         while(roboRun)
         {
-		   	try 
-			{
-		   	
-		   	/*Creates a new robot object*/
-		    Robot robot = new Robot();
-		    /*Sets the delay of the program*/
-		    int delay = random.nextInt(10000)+4000;
-		    /*Sleeps the thread to cause the delay*/
-		    Thread.sleep(delay);
-		
-		    /*Choose a random key from the arraylist and press it up and release*/
-		    int randomKey = random.nextInt(keys.size());
-		    robot.keyPress((int) keys.get(randomKey));
-		    robot.keyRelease((int) keys.get(randomKey));
-		    
-			}
-			catch (AWTException | InterruptedException e) 
-			{
-		        e.printStackTrace();
-			}
+
+                /*Sleeps the thread to cause the delay*/
+            try {
+                Thread.sleep(delay);
+            } catch (InterruptedException e) {
+
+            }
+
+            /*Choose a random key from the arraylist and press it up and release*/
+                int randomKey = random.nextInt(keys.size());
+                robot.keyPress((int) keys.get(randomKey));
+                robot.keyRelease((int) keys.get(randomKey));
+
+
+
         }
-	}
+    }
 }
